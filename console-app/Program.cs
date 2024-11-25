@@ -1,7 +1,35 @@
 ﻿using console_app;
 
 // UseServiceMethods();
-UseStringDemo();
+// UseStringDemo();
+// UsePerson();
+UseCompany();
+
+void UseCompany()
+{
+    Company Geveko = new Company();
+    Person ceo = new Person();
+    ceo.FirstName = "Ann";
+    ceo.LastName = "Olsson";
+    Geveko.CEO = ceo;
+    Geveko.YearFounded = 1985;
+    Console.WriteLine(Geveko.GetPhrase());
+}
+
+void UsePerson()
+{
+    // string fullName = Person.GetFullName("Fredrik", "Persson");
+    Person newPerson = new Person();
+    System.Type testOfType = newPerson.GetType();
+    // newPerson.SetFirstName("Ann");
+    newPerson.FirstName = "Ann";
+    newPerson.LastName = "Olsson";
+    string firstName = newPerson.FirstName;
+    string fullName = newPerson.GetFullName();
+
+    // newPerson.SetLastName("Olsson");
+    Console.WriteLine(fullName);
+}
 
 void UseStringDemo()
 {
@@ -13,8 +41,31 @@ void UseStringDemo()
         printOutText += result[i] + ", ";
     }
     
-    Console.WriteLine(printOutText.TrimEnd(' ', ','));
+    // Console.WriteLine(printOutText.TrimEnd(' ', ','));
     
+    // String.Length
+    // String.IndexOf
+    // String.LastIndexOf
+    // String.Substring
+
+    string textToWorkWith =
+        "Nick sat against the wall of the church where they had dragged him to be clear of machine gun fire in the street. Both legs stuck out awkwardly. He had been hit in the spine. His face was sweaty and dirty. The sun shone on his face. The day was very hot. Rinaldi, big backed, his equipment sprawling, lay face downward against the wall.";
+    Console.WriteLine(textToWorkWith.Length);
+    
+    Console.WriteLine(textToWorkWith[335]);
+    char[] textAsChars = textToWorkWith.ToCharArray();
+    Console.WriteLine(textAsChars[335]);
+    Console.WriteLine(textToWorkWith.IndexOf('w'));
+    Console.WriteLine(textToWorkWith.IndexOf("wall"));
+    Console.WriteLine(textToWorkWith.LastIndexOf('w'));
+    int firstSpace = textToWorkWith.IndexOf(' ');
+    Console.WriteLine(firstSpace);
+    Console.WriteLine(textToWorkWith.Substring(310));
+    Console.WriteLine(textToWorkWith[310]);
+    string snippet = textToWorkWith.Substring(0, 4);
+    string textToWorkWithTemp = textToWorkWith.Remove(0, 5);
+    Console.WriteLine(snippet);
+    Console.WriteLine(textToWorkWithTemp);
 }
 
 void UseServiceMethods()
