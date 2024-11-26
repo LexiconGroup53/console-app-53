@@ -3,7 +3,39 @@
 // UseServiceMethods();
 // UseStringDemo();
 // UsePerson();
-UseCompany();
+// UseCompany();
+// UseHyphenation();
+UseInstitution();
+
+void UseInstitution()
+{
+    Institution newInstitution = new Institution(1, "AF", 3281);
+    bool isSuccessful = newInstitution.ChangeSize(89);
+
+    Console.WriteLine(newInstitution.Size);
+    Console.WriteLine(isSuccessful);
+    // Institution anotherInstitution = new Institution();
+    string otherColor = "Yellow";
+    
+    Color color = Color.Yellow;
+    if (color == Color.Yellow)
+    {
+        Console.WriteLine(color);
+    }
+
+    AltColor newAltColor = new AltColor();
+    newAltColor.SetToBlue();
+    string colorChoice = newAltColor.Color;
+    if(colorChoice.Equals("Blue")) Console.WriteLine("Blue");
+}
+void UseHyphenation()
+{
+    string[] text = Hyphenation.GetFormattedText();
+    foreach (string line in text)
+    {
+        Console.WriteLine(line);
+    }
+}
 
 void UseCompany()
 {
