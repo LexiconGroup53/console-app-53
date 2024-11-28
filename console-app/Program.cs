@@ -5,7 +5,33 @@
 // UsePerson();
 // UseCompany();
 // UseHyphenation();
-UseInstitution();
+// UseInstitution();
+// UseDictionary();
+UseIterationDemo();
+
+void UseIterationDemo()
+{
+    string[] result = IterationDemo.UseWhile();
+
+    foreach (string item in result)
+    {
+        Console.WriteLine(item);
+    }
+
+    int lengthOfString = IterationDemo.UseDoWhile();
+    Console.WriteLine(lengthOfString);
+}
+void UseDictionary()
+{
+    bool energy = DictionaryDemo.UseDictionary();
+    /*
+     foreach (var item in energy)
+    {
+        Console.WriteLine(item);
+    }
+    */
+    Console.WriteLine(energy);
+}
 
 void UseInstitution()
 {
