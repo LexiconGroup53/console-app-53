@@ -7,8 +7,31 @@
 // UseHyphenation();
 // UseInstitution();
 // UseDictionary();
-UseIterationDemo();
+// UseIterationDemo();
+// UseUserInput();
+UseConcertRelated();
 
+void UseConcertRelated()
+{
+    ConcertRelated.UseParse();
+}
+void UseUserInput()
+{
+    /*
+    Console.WriteLine("User input (enter text to start execution again)");
+    string textInput = Console.ReadLine();
+    Console.WriteLine("You wrote: " + textInput);
+        */
+    int numberInput = Console.Read();
+    Console.WriteLine(numberInput);
+    Console.ReadLine();
+
+    ConsoleKeyInfo keyPressed = Console.ReadKey();
+    char entry = keyPressed.KeyChar;
+    
+    Console.WriteLine(keyPressed.Key);
+    Console.WriteLine(keyPressed.Modifiers);
+}
 void UseIterationDemo()
 {
     string[] result = IterationDemo.UseWhile();
