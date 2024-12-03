@@ -9,7 +9,22 @@
 // UseDictionary();
 // UseIterationDemo();
 // UseUserInput();
-UseConcertRelated();
+// UseConcertRelated();
+UseExceptionsDemo();
+
+void UseExceptionsDemo()
+{
+    try
+    {
+        Console.WriteLine(ExceptionsDemo.GetNumberWithCatch());
+    }
+    catch
+    {
+        Console.WriteLine("In program.cs – too long a number");
+    }
+
+    Console.WriteLine("Continue in program.cs");
+}
 
 void UseConcertRelated()
 {
