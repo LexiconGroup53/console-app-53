@@ -10,8 +10,30 @@
 // UseIterationDemo();
 // UseUserInput();
 // UseConcertRelated();
-UseExceptionsDemo();
+// UseExceptionsDemo();
+UseListDemo();
 
+void UseListDemo()
+{
+    ListDemo demo = new ListDemo();
+    
+    Person toRemove = demo.FindListItem("Dally");
+    bool success = demo.RemoveFromList(toRemove);
+
+    Person newPerson = new Person("Petty", "Crime");
+    demo.AddItem(newPerson);
+    List<Person> persons = demo.GetList();
+    foreach (Person person in persons)
+    {
+        Console.WriteLine("Firstname: " + person.FirstName + " – Lastname: " + person.LastName);
+    }
+    demo.PersistList();
+    List<Person> restoredList = demo.RestoreList();
+    foreach (Person person in restoredList)
+    {
+        Console.WriteLine(person.FirstName + " " + person.LastName + " is back");
+    }
+}
 void UseExceptionsDemo()
 {
     try
