@@ -1,4 +1,5 @@
-﻿using console_app;
+﻿using System.Text.Json;
+using console_app;
 
 // UseServiceMethods();
 // UseStringDemo();
@@ -11,7 +12,28 @@
 // UseUserInput();
 // UseConcertRelated();
 // UseExceptionsDemo();
-UseListDemo();
+// UseListDemo();
+UseLINQDemo(); 
+
+void UseLINQDemo()
+{
+    /*string mockData = File.ReadAllText("MOCK_DATA.json");
+    List<Student> students = JsonSerializer.Deserialize<List<Student>>(mockData);
+
+    // LinqDemo.FilterAge(students);
+    List<int> first = LinqDemo.GetStudentId(students);
+    List<int> second = LinqDemo.GetAnotherStudentId(students);
+
+    
+    List<int> reduced = first
+        .Intersect(second)
+        .ToList();
+
+    foreach (int item in reduced)
+    {
+        Console.WriteLine(item);
+    }*/
+}
 
 void UseListDemo()
 {

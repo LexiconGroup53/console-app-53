@@ -1,6 +1,6 @@
 namespace console_app;
 
-public class ListDemo
+public class ListDemo : IListDemo
 {
     public List<Person> persons { get; set; } = new List<Person>();
 
@@ -14,11 +14,17 @@ public class ListDemo
             persons.Add(newPerson);
         }
     }
-    public List<Person> GetList()
+    
+    public List<Person> GetListy()
     {
         return persons;
     }
 
+    public List<Person> GetList()
+    {
+        return persons;
+    }
+    
     public bool RemoveFromList(Person person)
     {
         return persons.Remove(person);
@@ -64,6 +70,6 @@ public class ListDemo
 
         return restoredList;
     }
-    
+
     
 }

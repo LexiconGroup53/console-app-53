@@ -1,8 +1,17 @@
 using console_app;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.MapPost("/link", (string user, int number) => $"User was: {user}");
 app.MapPost("/form", async (HttpRequest request) =>
 {
     var form = await request.ReadFormAsync();
