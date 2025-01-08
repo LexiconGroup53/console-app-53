@@ -1,6 +1,11 @@
+using API;
 using console_app;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<EducationContext>(options =>
+    options.UseSqlite("DataSource=edu.db"));
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -29,5 +34,6 @@ app.MapGet("/boolean", () => DictionaryDemo.UseDictionary());
 app.MapGet("/about/staff", () => 23 + 67);
 app.MapGet("/about", () => "The about section");
 app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
 app.Run();
