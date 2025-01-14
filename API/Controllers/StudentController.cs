@@ -19,4 +19,12 @@ public class StudentController : Controller
     {
         return _context.Students.ToList();
     }
+
+    [HttpPost]
+    public bool Index(Student student)
+    {
+        _context.Add(student);
+        _context.SaveChanges();
+        return true;
+    }
 }

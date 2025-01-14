@@ -3,11 +3,21 @@ using console_app;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var sitePolicy = "_site-policy";
 builder.Services.AddDbContext<EducationContext>(options =>
     options.UseSqlite("DataSource=edu.db"));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(sitePolicy, built =>
+    {
+        built.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -16,6 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(sitePolicy);
 app.MapPost("/link", (string user, int number) => $"User was: {user}");
 app.MapPost("/form", async (HttpRequest request) =>
 {
@@ -35,5 +46,6 @@ app.MapGet("/about/staff", () => 23 + 67);
 app.MapGet("/about", () => "The about section");
 app.MapGet("/", () => "Hello World!");
 app.MapControllers();
+
 
 app.Run();
