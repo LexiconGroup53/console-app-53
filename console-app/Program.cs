@@ -117,7 +117,7 @@ void UseDictionary()
 
 void UseInstitution()
 {
-    Institution newInstitution = new Institution(1, "AF", 3281);
+    Institution newInstitution = new Institution("AF", 3281);
     bool isSuccessful = newInstitution.ChangeSize(89);
 
     Console.WriteLine(newInstitution.Size);

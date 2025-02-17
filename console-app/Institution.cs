@@ -2,20 +2,19 @@ namespace console_app;
 
 public class Institution
 {
-    public int Id { get; set; }
+    public int InstitutionId { get; set; }
     public string Name { get; set; }
     public int Size { get; private set; }
+    public List<Course> Courses { get; set; }
     
-    public Institution(int id, string name)
+    public Institution(string name)
     {
-        this.Id = id;
         this.Name = name;
         this.Size = 0;
     }
     
-    public Institution(int id, string name, int size)
+    public Institution(string name, int size)
     {
-        this.Id = id;
         this.Name = name;
         this.Size = size;
     }

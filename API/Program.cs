@@ -1,12 +1,26 @@
+using System.Text.Json.Serialization;
 using API;
 using console_app;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+DotNetEnv.Env.Load();
+string variable = Environment.GetEnvironmentVariable("SQLite_SRC");
 var sitePolicy = "_site-policy";
+
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<EducationContext>();
+
 builder.Services.AddDbContext<EducationContext>(options =>
-    options.UseSqlite("DataSource=edu.db"));
-builder.Services.AddControllers();
+    options.UseSqlite(variable));
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
@@ -27,6 +41,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(sitePolicy);
+
+app.MapIdentityApi<IdentityUser>();
+
 app.MapPost("/link", (string user, int number) => $"User was: {user}");
 app.MapPost("/form", async (HttpRequest request) =>
 {
