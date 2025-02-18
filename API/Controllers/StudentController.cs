@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[Authorize]
+
 [ApiController]
 [Route("[controller]")]
 public class StudentController : Controller
@@ -18,6 +18,7 @@ public class StudentController : Controller
         _context = context;
         _logger = logger;
     }
+    
     
     [HttpGet]
     public IActionResult Index()
@@ -39,7 +40,7 @@ public class StudentController : Controller
             .ToList());
     }
     
-
+    [Authorize]
     [HttpPost]
     public bool Index(Student student)
     {

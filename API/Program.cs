@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using API;
+using API.Models;
 using console_app;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ string variable = Environment.GetEnvironmentVariable("SQLite_SRC");
 var sitePolicy = "_site-policy";
 
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+builder.Services.AddIdentityApiEndpoints<AppUser>()
     .AddEntityFrameworkStores<EducationContext>();
 
 builder.Services.AddDbContext<EducationContext>(options =>
@@ -42,7 +43,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(sitePolicy);
 
-app.MapIdentityApi<IdentityUser>();
+app.MapIdentityApi<AppUser>();
+app.UseAuthorization();
 
 app.MapPost("/link", (string user, int number) => $"User was: {user}");
 app.MapPost("/form", async (HttpRequest request) =>
